@@ -1,0 +1,25 @@
+{
+  "name": "MindFlow",
+  "short_name": "MindFlow",
+  "id": "/",
+  "description": "An AI-powered project tracker to manage tasks, projects, and team collaboration.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fde68a",
+  "theme_color": "#fde68a",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjMmUyZTVjIiBkPSJNMTIgMi41QzUuOCAyLjUgMy41IDYuMiA0LjYgMTJjMS4xIDUuOCA2LjQgOS41IDcuNCA5LjVzNi4zLTMuNyA3LjQtOS41YzEuMS01LjgtMS4yLTkuNS03LjQtOS41ek0xMiA3Yy0zLjIgMC00LjMgMS42LTMuNyA1LjEuNiAzLjUgMy43IDUuOSAzLjcgNS45czMuMS0yLjQgMy43LTUuOWMuNi0zLjUtLjUtNS4xLTMuNy01LjF6IiAvPjwvc3ZnPg==",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjMmUyZTVjIiBkPSJNMTIgMi41QzUuOCAyLjUgMy41IDYuMiA0LjYgMTJjMS4xIDUuOCA2LjQgOS41IDcuNCA5LjVzNi4zLTMuNyA3LjQtOS41YzEuMS01LjgtMS4yLTkuNS03LjQtOS41ek0xMiA3Yy0zLjIgMC00LjMgMS42LTMuNyA1LjEuNiAzLjUgMy43IDUuOSAzLjcgNS45czMuMS0yLjQgMy43LTUuOWMuNi0zLjUtLjUtNS4xLTMuNy01LjF6IiAvPjwvc3ZnPg==",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

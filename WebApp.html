@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindFlow</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%234f46e5' d='M12 2.5C5.8 2.5 3.5 6.2 4.6 12c1.1 5.8 6.4 9.5 7.4 9.5s6.3-3.7 7.4-9.5c1.1-5.8-1.2-9.5-7.4-9.5zM12 7c-3.2 0-4.3 1.6-3.7 5.1.6 3.5 3.7 5.9 3.7 5.9s3.1-2.4 3.7-5.9c.6-3.5-.5-5.1-3.7-5.1z' /%3E%3C/svg%3E" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --color-brand-primary: 79 70 229;
+        --color-brand-secondary: 124 58 237;
+        --color-base-100: 255 255 255; /* white */
+        --color-base-200: 249 250 251; /* gray-50 */
+        --color-base-300: 243 244 246; /* gray-100 */
+        --color-base-content: 17 24 39;  /* gray-900 */
+        --color-base-content-secondary: 107 114 128; /* gray-500 */
+      }
+      .dark {
+        --color-brand-primary: 99 102 241;
+        --color-brand-secondary: 139 92 246;
+        --color-base-100: 17 24 39;  /* gray-900 */
+        --color-base-200: 31 41 55;  /* gray-800 */
+        --color-base-300: 55 65 81;  /* gray-700 */
+        --color-base-content: 249 250 251; /* gray-50 */
+        --color-base-content-secondary: 156 163 175; /* gray-400 */
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: rgb(var(--color-base-100));
+        color: rgb(var(--color-base-content));
+      }
+      /* Add a more subtle scrollbar */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background-color: rgb(var(--color-base-300)); border-radius: 20px; border: 3px solid rgb(var(--color-base-100)); }
+      .dark ::-webkit-scrollbar-thumb { border-color: rgb(var(--color-base-100)); }
+    </style>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'brand-primary': 'rgb(var(--color-brand-primary) / <alpha-value>)',
+              'brand-secondary': 'rgb(var(--color-brand-secondary) / <alpha-value>)',
+              'base-100': 'rgb(var(--color-base-100) / <alpha-value>)',
+              'base-200': 'rgb(var(--color-base-200) / <alpha-value>)',
+              'base-300': 'rgb(var(--color-base-300) / <alpha-value>)',
+              'base-content': 'rgb(var(--color-base-content) / <alpha-value>)',
+              'base-content-secondary': 'rgb(var(--color-base-content-secondary) / <alpha-value>)',
+            }
+          }
+        }
+      }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0"
+  }
+}
+</script>
+</head>
+<body class="transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

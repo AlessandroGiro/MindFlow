@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>MindFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- PWA & Mobile Meta Tags -->
+    <!-- Default Theme Color (Managed by App.tsx) -->
+    <meta name="theme-color" content="#fde68a">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MindFlow">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjMmUyZTVjIiBkPSJNMTIgMi41QzUuOCAyLjUgMy41IDYuMiA0LjYgMTJjMS4xIDUuOCA2LjQgOS41IDcuNCA5LjVzNi4zLTMuNyA3LjQtOS41YzEuMS01LjgtMS4yLTkuNS03LjQtOS41ek0xMiA3Yy0zLjIgMC00LjMgMS42LTMuNyA1LjEuNiAzLjUgMy43IDUuOSAzLjcgNS45czMuMS0yLjQgMy43LTUuOWMuNi0zLjUtLjUtNS4xLTMuNy01LjF6IiAvPjwvc3ZnPg==">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjMmUyZTVjIiBkPSJNMTIgMi41QzUuOCAyLjUgMy41IDYuMiA0LjYgMTJjMS4xIDUuOCA2LjQgOS41IDcuNCA5LjVzNi4zLTMuNyA3LjQtOS41YzEuMS01LjgtMS4yLTkuNS03LjQtOS41ek0xMiA3Yy0zLjIgMC00LjMgMS42LTMuNyA1LjEuNiAzLjUgMy43IDUuOSAzLjcgNS45czMuMS0yLjQgMy43LTUuOWMuNi0zLjUtLjUtNS4xLTMuNy01LjF6IiAvPjwvc3ZnPg==">
+
+    <style>
+      :root {
+        /* MindSnap Vibe Palette */
+        --color-brand-primary: 46 46 92;    /* #2e2e5c - Dark Navy/Purple */
+        --color-brand-secondary: 255 200 150; /* Peach/Apricot */
+        
+        /* Base colors are white-ish to support glassmorphism */
+        --color-base-100: 255 255 255;       
+        --color-base-200: 255 255 255;       
+        --color-base-300: 245 245 250;       
+        
+        --color-base-content: 31 41 55;      /* Gray-800 */
+        --color-base-content-secondary: 75 85 99; /* Gray-600 */
+      }
+      .dark {
+        /* Dark Mode Vibe - Deep Glass */
+        --color-brand-primary: 139 92 246;  /* Violet-500 */
+        --color-brand-secondary: 75 85 99;
+        
+        --color-base-100: 20 20 30;         
+        --color-base-200: 30 30 45;         
+        --color-base-300: 45 45 60;         
+        
+        --color-base-content: 244 244 245;  
+        --color-base-content-secondary: 161 161 170; 
+      }
+
+      html, body, #root {
+        height: 100%;
+        width: 100%;
+        overflow: hidden; /* Prevent rubber-banding */
+      }
+      body {
+        font-family: 'Outfit', sans-serif;
+        /* The MindSnap Gradient */
+        background: fixed linear-gradient(135deg, #fde68a 0%, #fbcfe8 40%, #c4b5fd 100%);
+        color: rgb(var(--color-base-content));
+      }
+      
+      /* Dark mode background */
+      .dark body {
+          background: fixed linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+      }
+
+      /* Hide all scrollbars */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      body, * {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+      
+      @keyframes pulse-once {
+        50% { background-color: rgb(var(--color-brand-primary) / 0.1); }
+      }
+      .animate-pulse-once {
+        animation: pulse-once 1.5s ease-in-out;
+      }
+
+      /* Glass Utility */
+      .glass-panel {
+          background: rgba(255, 255, 255, 0.4);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .dark .glass-panel {
+          background: rgba(30, 30, 40, 0.6);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* Styles for large screens */
+      @media (min-width: 1921px) {
+        body {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2rem;
+          box-sizing: border-box;
+        }
+        #root {
+          width: 80%;
+          max-width: 1800px;
+          height: 100%;
+          max-height: 1080px;
+          margin: 0;
+          border-radius: 2rem;
+          box-shadow: 0 40px 60px -12px rgb(0 0 0 / 0.25);
+          overflow: hidden;
+          background: rgba(255,255,255,0.2);
+          backdrop-filter: blur(20px);
+        }
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Outfit', 'sans-serif'],
+            },
+            colors: {
+              'brand-primary': 'rgb(var(--color-brand-primary) / <alpha-value>)',
+              'brand-secondary': 'rgb(var(--color-brand-secondary) / <alpha-value>)',
+              'base-100': 'rgb(var(--color-base-100) / <alpha-value>)',
+              'base-200': 'rgb(var(--color-base-200) / <alpha-value>)',
+              'base-300': 'rgb(var(--color-base-300) / <alpha-value>)',
+              'base-content': 'rgb(var(--color-base-content) / <alpha-value>)',
+              'base-content-secondary': 'rgb(var(--color-base-content-secondary) / <alpha-value>)',
+            }
+          }
+        }
+      }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(error => {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+      }
+    </script>
+</body>
+</html>
